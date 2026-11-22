@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MalikGPT - Socials</title>
+<meta name="description" content="Find MalikGPT on YouTube, Twitch, TikTok, Kick, Instagram, X, Rumble and Snapchat.">
+<meta property="og:image" content="avatar.jpg">
+<link rel="icon" href="avatar.jpg">
+<style>
+:root{--cy:#22e5ff;--mg:#d946ef;--pu:#7c3aed;--or:#ff9d3c}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:#eaf6ff;font-family:system-ui,sans-serif;text-align:center;
+background:linear-gradient(rgba(5,4,22,.82),rgba(5,4,22,.92)),url(bg.jpg) center/cover fixed #07071a}
+main{max-width:900px;margin:0 auto;padding:2.5rem 1rem 4rem}
+.av{width:clamp(150px,38vw,210px);aspect-ratio:1;margin:0 auto 1rem;padding:5px;border-radius:50%;
+background:conic-gradient(var(--cy),var(--mg),var(--or),var(--cy));box-shadow:0 0 28px rgba(34,229,255,.55),0 0 60px rgba(217,70,239,.35);animation:spin 8s linear infinite}
+.av img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;animation:spin 8s linear infinite reverse;border:3px solid #07071a}
+@keyframes spin{to{transform:rotate(360deg)}}
+h1{margin:.2rem 0;font-size:clamp(2rem,7vw,3.2rem);letter-spacing:.04em;color:#bff7ff;
+text-shadow:0 0 8px var(--cy),0 0 22px var(--cy),0 0 40px var(--mg)}
+.sub{margin:0 0 2rem;opacity:.8;letter-spacing:.12em;text-transform:uppercase;font-size:.85rem;color:#ffd9a8}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+a.card{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 12px;border-radius:16px;color:inherit;text-decoration:none;
+background:linear-gradient(160deg,rgba(124,58,237,.28),rgba(34,229,255,.12));border:1px solid rgba(34,229,255,.45);
+box-shadow:0 0 12px rgba(34,229,255,.18),inset 0 0 14px rgba(217,70,239,.12);backdrop-filter:blur(4px);transition:transform .2s,box-shadow .2s,border-color .2s}
+a.card:hover,a.card:focus-visible{transform:translateY(-4px);border-color:var(--or);outline:none;
+box-shadow:0 0 22px rgba(34,229,255,.7),0 0 38px rgba(217,70,239,.5)}
+a.card svg{width:38px;height:38px;fill:#fff;filter:drop-shadow(0 0 6px var(--cy)) drop-shadow(0 0 10px var(--mg))}
+a.card span{font-weight:700;letter-spacing:.03em}
+@media(prefers-reduced-motion:reduce){.av,.av img{animation:none}a.card{transition:none}a.card:hover{transform:none}}
+</style></head><body>
+<main>
+  <div class="av"><img src="avatar.jpg" alt="MalikGPT avatar" width="480" height="480"></div>
+  <h1>MalikGPT</h1>
+  <p class="sub">Follow me everywhere</p>
+  <ul id="list" aria-label="MalikGPT social media links"></ul>
+</main>
+<script>
+// To change a link, edit the url below. To hide one, delete its line.
+const SOCIALS = [
+  { id: "youtube",   name: "YouTube",   url: "https://www.youtube.com/@realmalikgpt" },
+  { id: "twitch",    name: "Twitch",    url: "https://www.twitch.tv/malikgptlive" },
+  { id: "tiktok",    name: "TikTok",    url: "https://www.tiktok.com/@malikgpt" },
+  { id: "kick",      name: "Kick",      url: "https://kick.com/malikgpt" },
+  { id: "instagram", name: "Instagram", url: "https://www.instagram.com/realmalikgpt" },
+  { id: "x",         name: "X",         url: "https://x.com/MalikGPT" },
+  { id: "rumble",    name: "Rumble",    url: "https://rumble.com/c/c-7959182" },
+  { id: "snapchat",  name: "Snapchat",  url: "https://snapchat.com/t/PTGbBfHR" },
+];
+const ICONS = {
+    youtube:'<path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.900.5A3 3 0 0 0 1 7.200C.5 9.100.5 12 .5 12s0 2.900.5 4.800a3 3 0 0 0 2.100 2.100c1.900.5 8.900.5 8.900.5s7 0 8.900-.5a3 3 0 0 0 2.100-2.100c.5-1.900.5-4.800.5-4.800s0-2.900-.5-4.800zM9.800 15.500v-7l6 3.500z"/>',
+    twitch:'<path d="M3 2 1.500 6v14.500H7V23h3l2.500-2.500H17L22.500 15V2zm17.500 11.500-3.500 3.500h-5.500L8.500 19.500V17H4.500V4h16zM17 7.500h-2v5.500h2zm-5.500 0h-2v5.500h2z"/>',
+    tiktok:'<path d="M16.600 2h-3.300v13.200a2.900 2.900 0 1 1-2.900-2.900c.3 0 .6 0 .9.100V9a6.200 6.200 0 1 0 5.300 6.100V8.500a7.500 7.500 0 0 0 4.300 1.300V6.500A4.400 4.400 0 0 1 16.600 2z"/>',
+    kick:'<path d="M2 2h6v5h2V5h2V2h6v6h-2v2h-2v4h2v2h2v6h-6v-3h-2v-2h-2v5H2z"/>',
+    instagram:'<path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 3.500a4.500 4.500 0 1 1 0 9 4.500 4.500 0 0 1 0-9zm0 2a2.500 2.500 0 1 0 0 5 2.500 2.500 0 0 0 0-5zM17.500 5.800a1.200 1.200 0 1 1 0 2.400 1.200 1.200 0 0 1 0-2.400z"/>',
+    x:'<path d="M18.200 2h3.400l-7.400 8.500L23 22h-6.800l-5.300-7-6.100 7H1.400l7.900-9.100L1 2h7l4.800 6.400zm-1.200 18h1.900L7 3.900H5z"/>',
+    rumble:'<path d="M12 1.500a10.500 10.500 0 1 0 0 21 10.500 10.500 0 0 0 0-21zm-3 5.500h4.200a3.300 3.300 0 0 1 1.300 6.300l2.200 3.700h-2.600l-1.900-3.300H11V17H9zm2 2v2h2.200a1 1 0 0 0 0-2z"/>',
+    snapchat:'<path d="M12 2c3 0 5 2.200 5 5v2.500c.4.300 1.200.4 2 .6.500.1.600.8.100 1-.7.300-1.400.4-1.800.7.400 1.300 1.600 2.600 3.200 3 .4.100.4.700 0 .9-.9.400-1.900.5-2.300.6-.2.700-.4 1.100-.8 1.100-.6 0-1.300-.4-2.300-.2-1.100.2-1.800 1.800-3.100 1.800s-2-1.600-3.100-1.800c-1-.2-1.700.2-2.300.2-.4 0-.6-.4-.8-1.100-.4-.1-1.400-.2-2.300-.6-.4-.2-.4-.8 0-.9 1.600-.4 2.800-1.700 3.200-3-.4-.3-1.100-.4-1.800-.7-.5-.2-.4-.9.100-1 .8-.2 1.600-.3 2-.6V7c0-2.800 2-5 5-5z"/>'
+  };
+const list = document.getElementById("list");
+SOCIALS.forEach(s => {
+  const li = document.createElement("li"), a = document.createElement("a");
+  a.className = "card"; a.href = s.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+  a.setAttribute("aria-label", `MalikGPT on ${s.name} (opens in a new tab)`);
+  a.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${ICONS[s.id]}</svg><span></span>`;
+  a.querySelector("span").textContent = s.name;
+  li.append(a); list.append(li);
+});
+</script>
+</body></html>
